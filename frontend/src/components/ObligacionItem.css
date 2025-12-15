@@ -1,0 +1,47 @@
+.obligacion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.obligacion-item:hover {
+  background: #252d3d;
+  border-color: #4b5563;
+}
+
+.obligacion-item.urgente {
+  border-left: 3px solid #ef4444;
+}
+
+.obligacion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.obligacion-nombre {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f9fafb;
+  margin: 0;
+}
+
+.obligacion-vencimiento {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.obligacion-item.urgente .obligacion-vencimiento {
+  color: #fca5a5;
+}
+
+.obligacion-monto {
+  font-size: 16px;
+  font-weight: 700;
+  color: #60a5fa;
+}

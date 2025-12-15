@@ -118,8 +118,13 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT d.*
+    SELECT 
+        d.*,
+        s.nombre AS subcategoria_nombre,
+        c.nombre AS categoria_nombre
     FROM presupuesto_detalle d
+    LEFT JOIN subcategoria s ON d.id_subcategoria = s.id_subcategoria
+    LEFT JOIN categoria c ON s.id_categoria = c.id_categoria
     WHERE d.id_presupuesto = @id_presupuesto
     ORDER BY d.id_subcategoria;
 END;

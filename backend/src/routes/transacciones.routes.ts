@@ -67,6 +67,28 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
+// listar transacciones de un usuario
+router.get('/usuario/:idUsuario', async (req: Request, res: Response) => {
+  const idUsuario = Number(req.params.idUsuario);
+
+  if (!idUsuario || idUsuario <= 0) {
+    return res.status(400).json({ mensaje: 'id_usuario invalido' });
+  }
+
+  try {
+    const resultado = await execSP('sp_transaccion_list_by_usuario', {
+      id_usuario: idUsuario,
+    });
+
+    return res.json(resultado.recordset);
+  } catch (err) {
+    console.error('error listando transacciones del usuario:', err);
+    return res
+      .status(500)
+      .json({ mensaje: 'no se pudieron traer las transacciones del usuario' });
+  }
+});
+
 // listar transacciones de un presupuesto
 router.get('/presupuesto/:idPresupuesto', async (req: Request, res: Response) => {
   const idPres = Number(req.params.idPresupuesto);

@@ -1,0 +1,61 @@
+.presupuestos-page {
+  max-width: 1400px;
+}
+
+.presupuestos-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .presupuestos-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detalle-header {
+  margin-bottom: 16px;
+}
+
+.progress-bar-container {
+  position: relative;
+  background: #0f172a;
+  border-radius: 20px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(135deg, #991B1B 0%, #7C0A02 100%);
+  transition: width 0.3s;
+  border-radius: 20px;
+}
+
+.progress-bar.over-budget {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 600;
+  color: #f1f5f9;
+  z-index: 1;
+}
+
+.presupuesto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}

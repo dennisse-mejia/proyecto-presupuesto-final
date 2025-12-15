@@ -8,6 +8,7 @@ import presupuestoDetalleRouter from './routes/presupuestoDetalle.routes';
 import transaccionesRouter from './routes/transacciones.routes';
 import obligacionesRouter from './routes/obligaciones.routes';
 import metasRouter from './routes/metas.routes';
+import dashboardRouter from './routes/dashboard.routes';
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use('/api/presupuesto-detalle', presupuestoDetalleRouter);
 app.use('/api/transacciones', transaccionesRouter);
 app.use('/api/obligaciones', obligacionesRouter);
 app.use('/api/metas', metasRouter);
+app.use('/api/dashboard', dashboardRouter);
 
 const PORT = Number(process.env.PORT || 3000);
 

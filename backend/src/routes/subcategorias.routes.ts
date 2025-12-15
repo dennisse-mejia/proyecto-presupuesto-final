@@ -59,7 +59,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 
 // crear la subcategoria
 router.post('/', async (req: Request, res: Response) => {
-  const { id_categoria, nombre, descripcion, tipo, icono } = req.body;
+  const { id_categoria, nombre, descripcion, tipo } = req.body;
 
   if (!idValido(id_categoria)) {
     return res.status(400).json({ mensaje: 'id_categoria es obligatorio' });
@@ -79,7 +79,7 @@ router.post('/', async (req: Request, res: Response) => {
       nombre,
       descripcion: descripcion ?? null,
       tipo,
-      icono: icono ?? null,
+      estado: 'activa',
       creado_por: 'api',
     });
 

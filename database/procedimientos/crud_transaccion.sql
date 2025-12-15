@@ -127,6 +127,30 @@ BEGIN
 END;
 GO
 
+-- sp_transaccion_list_by_usuario
+-- Listar transacciones de usuario
+
+CREATE OR ALTER PROCEDURE sp_transaccion_list_by_usuario
+(
+    @id_usuario INT
+)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        t.*,
+        c.nombre AS categoria_nombre,
+        c.tipo AS categoria_tipo,
+        s.nombre AS subcategoria_nombre
+    FROM transaccion t
+    LEFT JOIN subcategoria s ON t.id_subcategoria = s.id_subcategoria
+    LEFT JOIN categoria c ON s.id_categoria = c.id_categoria
+    WHERE t.id_usuario = @id_usuario
+    ORDER BY t.fecha DESC, t.id_transaccion DESC;
+END;
+GO
+
 -- sp_transaccion_list_by_presupuesto
 -- Listar transacciones de presupuesto
 

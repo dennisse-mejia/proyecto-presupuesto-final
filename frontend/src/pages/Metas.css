@@ -1,0 +1,33 @@
+.metas-page {
+  max-width: 1400px;
+}
+
+.badge-completada {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+}
+
+.badge-vencida {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+.badge-por-vencer {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fcd34d;
+}
+
+.badge-en-progreso {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.progress-bar.completed {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.meta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

@@ -11,7 +11,7 @@ const parseIdSeguro = (valor: string | undefined) => {
 
 // crear presupuesto
 router.post('/', async (req: Request, res: Response) => {
-  const { id_usuario, nombre, anio, mes, descripcion } = req.body;
+  const { id_usuario, nombre, mes, anio } = req.body;
 
   if (!id_usuario || id_usuario <= 0) {
     return res.status(400).json({ mensaje: 'id_usuario es obligatorio' });
@@ -29,9 +29,11 @@ router.post('/', async (req: Request, res: Response) => {
     const resultado = await execSP('sp_presupuesto_insert', {
       id_usuario,
       nombre,
-      anio,
-      mes,
-      descripcion: descripcion ?? null,
+      anio_inicio: anio,
+      mes_inicio: mes,
+      anio_fin: anio,
+      mes_fin: mes,
+      estado: 'activo',
       creado_por: 'api',
     });
 
