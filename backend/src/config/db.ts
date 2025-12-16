@@ -33,10 +33,10 @@ export async function getPool(): Promise<sql.ConnectionPool> {
 
   try {
     pool = await sql.connect(dbConfig);
-    console.log('✅ Conectado a SQL Server:', dbConfig.database);
+    console.log(' Conectado a SQL Server:', dbConfig.database);
     return pool;
   } catch (err) {
-    console.error('❌ Error conectando a SQL Server:', err);
+    console.error('Error conectando a SQL Server:', err);
     pool = null;
     throw err;
   }
@@ -55,12 +55,12 @@ export async function execSP(
       request.input(key, value as any);
     }
 
-    console.log(`🔵 Ejecutando SP: ${spName}`, params);
+    console.log(`Ejecutando SP: ${spName}`, params);
     const result = await request.execute(spName);
-    console.log(`✅ SP ejecutado: ${spName}`, result.recordset?.length ?? 0, 'registros');
+    console.log(`SP ejecutado: ${spName}`, result.recordset?.length ?? 0, 'registros');
     return result;
   } catch (err: any) {
-    console.error(`❌ Error en SP ${spName}:`, err.message);
+    console.error(`Error en SP ${spName}:`, err.message);
     throw err;
   }
 }
@@ -77,12 +77,12 @@ export async function query(
       request.input(key, value as any);
     }
 
-    console.log(`🔵 Ejecutando Query:`, sqlQuery.substring(0, 100) + '...');
+    console.log(` Ejecutando Query:`, sqlQuery.substring(0, 100) + '...');
     const result = await request.query(sqlQuery);
-    console.log(`✅ Query ejecutada:`, result.recordset?.length ?? 0, 'registros');
+    console.log(`Query ejecutada:`, result.recordset?.length ?? 0, 'registros');
     return result;
   } catch (err: any) {
-    console.error(`❌ Error en Query:`, err.message);
+    console.error(`Error en Query:`, err.message);
     throw err;
   }
 }
