@@ -3,9 +3,7 @@ import { execSP } from '../config/db';
 
 const router = Router();
 
-// ==============================
 // LISTAR CATEGORIAS POR USUARIO
-// ==============================
 router.get('/usuario/:idUsuario', async (req: Request, res: Response) => {
   const idUsuario = Number(req.params.idUsuario);
 
@@ -25,9 +23,9 @@ router.get('/usuario/:idUsuario', async (req: Request, res: Response) => {
   }
 });
 
-// ==============================
+
 // CREAR CATEGORIA
-// ==============================
+
 router.post('/', async (req: Request, res: Response) => {
   const { id_usuario, nombre, descripcion, tipo, icono } = req.body;
 

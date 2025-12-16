@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import usuariosRouter from './routes/usuarios.routes';
@@ -16,7 +17,6 @@ app.use(express.json());
 
 app.use(
   cors({
-    // CUIDADO, si cambiamos el puerto hay que actualizarlo
     origin: 'http://localhost:5173',
   })
 );

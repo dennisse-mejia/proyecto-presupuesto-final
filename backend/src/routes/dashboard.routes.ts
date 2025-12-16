@@ -12,7 +12,7 @@ router.get('/:idUsuario', async (req: Request, res: Response) => {
   }
 
   try {
-    // 1. Total de presupuestos (suma de montos totales)
+    // Total de presupuestos 
     const presupuestosResult = await query(`
       SELECT ISNULL(SUM(pd.monto_asignado), 0) as total_presupuestos
       FROM presupuesto_detalle pd
@@ -20,14 +20,14 @@ router.get('/:idUsuario', async (req: Request, res: Response) => {
       WHERE p.id_usuario = @id_usuario
     `, { id_usuario: idUsuario });
 
-    // 2. Total de transacciones (conteo)
+    //  Total de transacciones 
     const transaccionesResult = await query(`
       SELECT COUNT(*) as total_transacciones
       FROM transaccion
       WHERE id_usuario = @id_usuario
     `, { id_usuario: idUsuario });
 
-    // 3. Porcentaje de metas cumplidas
+    //  Porcentaje de metas cumplidas
     const metasResult = await query(`
       SELECT 
         COUNT(*) as total_metas,
@@ -42,7 +42,7 @@ router.get('/:idUsuario', async (req: Request, res: Response) => {
       ? Math.round((metasCompletadas / totalMetas) * 100) 
       : 0;
 
-    // 4. Obligaciones próximas (activas)
+    //  Obligaciones próximas 
     const obligacionesResult = await query(`
       SELECT TOP 5
         obf.id_obligacion,
@@ -60,7 +60,7 @@ router.get('/:idUsuario', async (req: Request, res: Response) => {
       ORDER BY obf.fecha_registro DESC
     `, { id_usuario: idUsuario });
 
-    // 5. Categorías más usadas (top 5 por gasto)
+    // Categorías más usadas 
     const categoriasResult = await query(`
       SELECT TOP 5
         c.id_categoria,
